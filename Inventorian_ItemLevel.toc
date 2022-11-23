@@ -1,0 +1,9 @@
+## Interface: 100002
+## Title: Inventorian ItemLevels
+## Author: N0tme
+## Notes: Show item level in Inventorian
+## RequiredDeps: Inventorian
+## Version: 1
+
+lib/libStub/LibStub.lua
+Inventorian_ItemLevel.lua
