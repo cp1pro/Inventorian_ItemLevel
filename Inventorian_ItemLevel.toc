@@ -3,7 +3,7 @@
 ## Author: N0tme
 ## Notes: Show item level in Inventorian
 ## RequiredDeps: Inventorian
-## Version: 1.1
+## Version: 1.2
 
 lib/libStub/LibStub.lua
 Inventorian_ItemLevel.lua
