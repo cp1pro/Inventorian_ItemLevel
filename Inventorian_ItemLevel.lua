@@ -45,7 +45,9 @@ function InvLevel:WrapItemButton(item)
 		
 		item.ItemLevel = overlayFrame:CreateFontString('$parentItemLevel', 'ARTWORK')
 		item.ItemLevel:SetPoint('TOPLEFT', 0, -2)
-		item.ItemLevel:SetFontObject(NumberFontNormal)
+		item.ItemLevel:SetFont('Fonts\\ARIALN.TTF', 14, 'OUTLINE, THICK')
+		item.ItemLevel:SetShadowColor(BLACK_FONT_COLOR:GetRGBA())
+		item.ItemLevel:SetShadowOffset(2, -1)
 		item.ItemLevel:SetJustifyH('LEFT')
 	end
 	
