@@ -6,12 +6,7 @@ function InvLevel:Update()
 		self.ItemLevel:Hide()
 	end	
 
-	--saved items do not contain information about the current level of items
-	if GetUnitName('player') ~= self.container:GetParent():GetPlayerName() then
-		return
-	end
-	
-	local _, _, _, quality, _, _, link, _, itemID = self:GetInfo()
+	local _, _, _, quality, _, _, _, _, itemID = self:GetInfo()
 	--slot is empty or not loaded, dont do nothing
 	if not itemID then
 		return
@@ -21,7 +16,14 @@ function InvLevel:Update()
 		local _, _, _, _, _, itemClass = GetItemInfoInstant(itemID)
 		
 		if (quality and quality or 0) >= Enum.ItemQuality.Uncommon and (itemClass == Enum.ItemClass.Weapon or itemClass == Enum.ItemClass.Armor) then
-			local itemLevel = C_Item.GetCurrentItemLevel( ItemLocation:CreateFromBagAndSlot(self.bag, self.slot) )
+			
+			local itemLevel
+			if self:IsCached() then
+				itemLevel = GetDetailedItemLevelInfo(self.itemLink)
+			else
+				itemLevel = C_Item.GetCurrentItemLevel( ItemLocation:CreateFromBagAndSlot(self.bag, self.slot) )
+			end
+			
 			local r, g, b, hex = GetItemQualityColor(quality)
 			self.ItemLevel:SetFormattedText('|c%s%s|r', hex, itemLevel or '?')
 			self.ItemLevel:Show()
